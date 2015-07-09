@@ -2,7 +2,6 @@ var React = require('react');
 var Reflux = require('reflux');
 var CommentsActions = require("jsx/actions/commentactions");
 var CommentsStore = require("jsx/stores/commentstore");
-var $ = require('jquery');
 
 module.exports = React.createClass({displayName: 'CommentForm',
     getInitialState: function() {

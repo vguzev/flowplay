@@ -1,5 +1,4 @@
 var React = require('react');
-var $ = require('jquery');
 var marked = require('react-marked');
 var moment = require('moment');
 var CommentsActions = require("jsx/actions/commentactions");
