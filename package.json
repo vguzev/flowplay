@@ -1,18 +1,32 @@
 {
   "name": "flowplay",
-  "version": "1.0.0",
-  "description": "Flowplay",
-  "main": "Gruntfile.js",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --hot"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vguzev/flowplay.git"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "reflux": "^0.2.8",
     "superagent": "^1.2.0",
-    "react-router": "^0.13.3"
+    "webpack": "^1.10.1",
+    "jsx-loader": "^0.13.2",
+    "css-loader": "latest",
+    "less-loader": "latest",
+    "style-loader": "latest",
+    "underscore": "latest",
+    "less": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "react-marked": "latest",
+    "moment": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/vguzev/flowplay/issues"
   }
 }

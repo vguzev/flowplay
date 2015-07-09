@@ -1,6 +1,6 @@
 var React = require('react');
-var Toolbar = require('jsx/flowplay-toolbar');
-var CommentsBox = require('jsx/flowplay-comments');
+var Toolbar = require('jsx/header');
+var CommentsBox = require('jsx/comments/commentsbox');
 React.render(
     <CommentsBox />,
     document.getElementById('content')

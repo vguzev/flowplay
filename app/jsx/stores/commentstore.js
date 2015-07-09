@@ -1,22 +1,60 @@
 var Reflux = require('reflux');
 var request = require('superagent');
 var CommentsActions = require("jsx/actions/commentactions");
+var _ = require("underscore");
+var settings = require("jsx/settings");
 
 module.exports = Reflux.createStore({
-    comments: null,
+    comments: [],
+    found: 0,
+    page: 1,
     listenables: [CommentsActions],
-    load: function(page) {
+    onLoad: function(page) {
+        console.log('CommentStore.onLoad('+page+')');
+        this.page = page;
         var _this = this;
         request
             .get('http://vefire.ru/ibm/flowplay-api/ajax/comment/list/')
-            .send({page: page})
-            .set('Accept', 'application/json')
+            .query({page: page, items_per_page: settings.commentsPerPage})
             .end(function(err, res){
-                _this.comments = res;
-                _this.trigger();
+                console.log('onLoad->end()');
+                if (res.ok) {
+                    _this.comments = res.body.results;
+                    _this.found = res.body.found;
+                    _this.trigger(_this);
+                }
+                return res.body;
             });
     },
-    onLoad: function(page) {
-        this.load(page);
+    onCreate: function(text) {
+        console.log('CommentStore.onCreate('+text+')');
+        var _this = this;
+        request
+            .post('http://vefire.ru/ibm/flowplay-api/ajax/comment/create/')
+            .send({user_id: 1, text: text})
+            .end(function(err, res){
+                console.log('onCreate->end()');
+                if (res.ok) {
+                    _this.trigger(_this);
+                    _this.onLoad(1);
+                }
+                return res.body;
+            });
+    },
+    onDelete: function(commentId) {
+        console.log('CommentStore.onDelete('+commentId+')');
+        var _this = this;
+        request
+            .del('http://vefire.ru/ibm/flowplay-api/ajax/comment/delete/')
+            .send({comment_id: commentId})
+            .end(function(err, res){
+                console.log('onDelete->end()');
+                if (res.ok) {
+                    _this.trigger(_this);
+                    _this.onLoad(_this.page);
+                }
+                return res.body;
+            });
+
     }
 });

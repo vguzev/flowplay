@@ -1,7 +1,199 @@
-nav.navigation {
+/* Bootstrap */
+body {
+  font-family:Arial;
 }
-.header {
+a {
+  color:#37bc6c;
+  text-decoration:none;
+  &hover {
+    color:#33cb70;
+    text-decoration:underline;
+  }
 }
-.section {
- .container;
+.form-control {
+  height:30px;
+  box-shadow:none;
+}
+
+.btn {
+  padding: 3px 10px;
+  border:0;
+}
+.btn-default {
+  #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
+  color:#fff;
+  &:hover, &:focus {
+    #gradient.vertical(rgba(81, 207, 94, 0.85), rgba(33, 177, 154, 0.85), 0, 100%);
+    color:#fff;
+  }
+}
+h2 {
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+
+/* Переключалка страниц в комментариях */
+.comment-list-pager {
+  margin-bottom:15px;
+  > span {
+    width: 90px;
+    float: left;
+    color: #afafaf;
+    margin-top: 5px;
+  }
+}
+.pagination {
+  margin:0;
+  >li {
+    >a, >span {
+      color: #444;
+      border: 0;
+      padding: 5px 11px;
+    }
+    >a {
+      border-radius: 4px;
+      margin: 0 3px;
+      &:hover {
+        #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
+        color:#fff;
+      }
+    }
+    >a.active, >a.active:hover  {
+      #gradient.vertical(rgba(245, 140, 31, 1), rgba(252, 189, 13, 1), 0, 100%);
+      color:#fff;
+    }
+  }
+}
+
+/* Форма добавления комментариев */
+.comment-form {
+  margin: 40px 30px;
+  .form-control {
+    height:26px;
+  }
+  .col-xs-10 {
+    padding-right:0;
+  }
+}
+
+/* Комментарии */
+.comment-list {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      border-top: 1px solid #ededed;
+      padding: 10px 0 30px 0;
+      &:last-child {
+        border-bottom: 1px solid #ededed;
+      }
+    }
+  }
+  .comment-list-icons {
+    display:inline-block;
+    margin-left:10px;
+    > a {
+      color: #afafaf;
+      text-decoration: none;
+      &:hover {
+        color: #777;
+      }
+    }
+  }
+}
+.comment-list-img {
+  float:left;
+  width:75px;
+  img {
+    width:60px;
+    height:60px;
+  }
+}
+.comment-list-content {
+  margin-left:75px;
+  p {
+    position:relative;
+    padding-right:25px;
+  }
+}
+.comment-list-text {
+  position:relative;
+}
+.comment-list-like {
+  position:absolute;
+  bottom:0;
+  right:0;
+  color:#afafaf;
+  text-decoration:none;
+  font-size: 12px;
+  :hover {
+    color:#777;
+    text-decoration:none;
+  }
+}
+.comment-list-date {
+  text-align:right;
+  color: #afafaf;
+  font-size: 11px;
+}
+.img-rounded {
+  border-radius:4px;
+}
+
+/* Иконки */
+.icon-link {
+  font-size:12px;
+  margin-right:10px;
+}
+.icon {
+  display: inline-block;
+  background: url('/app/img/sprite.png') no-repeat 0 0;
+  width:15px;
+  height:15px;
+  vertical-align:text-top;
+}
+.icon-heart {
+  background-position:-60px -80px;
+}
+.icon-plus {
+  background-position:-45px -80px;
+}
+.icon-comment {
+  background-position:-90px -80px;
+}
+.icon-reply {
+  background-position:-75px -80px;
+}
+.icon-close {
+  background-position:-30px -80px;
+}
+.icon-gear {
+  background-position:0px -80px;
+}
+.icon-minus {
+  background-position:-135px -80px;
+}
+.icon-user-w {
+  background-position:-150px -110px;
+}
+.icon-star {
+  background-position:-165px -80px;
+}
+.icon-b-track, .icon-b-post, .icon-b-user {
+  display: inline-block;
+  background: url('/app/img/sprite.png') no-repeat 0 0;
+  width:35px;
+  height:35px;
+  vertical-align:middle;
+  margin-right:5px;
+}
+.icon-b-track {
+  background-position:-35px -125px;
+}
+.icon-b-post {
+  background-position:-70px -125px;
+}
+.icon-b-user {
+  background-position:0px -125px;
 }

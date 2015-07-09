@@ -1,3 +1,4 @@
-/**
- * Created by Админ on 09.07.2015.
- */
+module.exports =  {
+    // Количество комментариев на одной странице
+    'commentsPerPage': 3
+};
