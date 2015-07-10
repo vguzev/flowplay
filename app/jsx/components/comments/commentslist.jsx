@@ -1,9 +1,9 @@
 var React = require('react');
 var Reflux = require('reflux');
 var CommentsActions = require("jsx/actions/commentactions");
-var CommentsStore = require("jsx/stores/commentstore");
-var Comment = require("jsx/comments/comment");
-var Pager = require("jsx/comments/pager");
+var CommentsStore = require("jsx/stores/CommentStore");
+var Comment = require("jsx/components/comments/comment");
+var Pager = require("jsx/components/comments/pager");
 var settings = require("jsx/settings");
 
 module.exports = React.createClass({displayName: 'CommentsList',

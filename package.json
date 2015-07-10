@@ -24,7 +24,8 @@
     "less": "latest",
     "extract-text-webpack-plugin": "latest",
     "react-marked": "latest",
-    "moment": "latest"
+    "moment": "latest",
+    "react-slick": "latest"
   },
   "bugs": {
     "url": "https://github.com/vguzev/flowplay/issues"

@@ -1,6 +1,6 @@
 var React = require('react');
-var CommentsList = require("jsx/comments/commentslist");
-var CommentForm = require("jsx/comments/commentform");
+var CommentsList = require("jsx/components/comments/commentslist");
+var CommentForm = require("jsx/components/comments/commentform");
 
 module.exports = React.createClass({displayName: 'CommentsBox',
     render: function() {
