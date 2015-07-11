@@ -31,16 +31,50 @@ h2 {
   font-size:26px;
   margin-bottom:20px;
 }
+.content {
+  margin-top:120px;
+}
+.fixcontent {
+  width:965px;
+  text-align:left;
+  margin: 0 auto;
+}
 
 
-/* Ïåðåêëþ÷àëêà ñòðàíèö â êîììåíòàðèÿõ */
-.comment-list-pager {
-  margin-bottom:15px;
-  > span {
-    width: 90px;
-    float: left;
-    color: #afafaf;
-    margin-top: 5px;
+
+/* Ð¤Ð¾Ñ€Ð¼Ð° Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ */
+.comment-form {
+  margin: 40px 30px;
+  .form-control {
+    height:26px;
+  }
+  .col-xs-10 {
+    padding-right:0;
+  }
+}
+
+/* ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸ */
+.comments-list {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      border-top: 1px solid #ededed;
+      padding: 10px 0 30px 0;
+      &:last-child {
+        border-bottom: 1px solid #ededed;
+      }
+    }
+  }
+  /* ÐŸÐµÐ¹Ð´Ð¶ÐµÑ€ Ð´Ð»Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² */
+  .comments-list--pager {
+    margin-bottom:15px;
+    > span {
+      width: 90px;
+      float: left;
+      color: #afafaf;
+      margin-top: 5px;
+    }
   }
 }
 .pagination {
@@ -66,33 +100,10 @@ h2 {
   }
 }
 
-/* Ôîðìà äîáàâëåíèÿ êîììåíòàðèåâ */
-.comment-form {
-  margin: 40px 30px;
-  .form-control {
-    height:26px;
-  }
-  .col-xs-10 {
-    padding-right:0;
-  }
-}
-
-/* Êîììåíòàðèè */
-.comment-list {
-  ul {
-    list-style-type: none;
-    padding: 0;
-    li {
-      border-top: 1px solid #ededed;
-      padding: 10px 0 30px 0;
-      &:last-child {
-        border-bottom: 1px solid #ededed;
-      }
-    }
-  }
-  .comment-list-icons {
-    display:inline-block;
-    margin-left:10px;
+.comment {
+  .comment--icons {
+    display: inline-block;
+    margin-left: 10px;
     > a {
       color: #afafaf;
       text-decoration: none;
@@ -101,47 +112,48 @@ h2 {
       }
     }
   }
-}
-.comment-list-img {
-  float:left;
-  width:75px;
-  img {
-    width:60px;
-    height:60px;
+ .comment--img {
+    float: left;
+    width: 75px;
+    img {
+      width: 60px;
+      height: 60px;
+    }
   }
-}
-.comment-list-content {
-  margin-left:75px;
-  p {
+  .comment--content {
+    margin-left:75px;
+    p {
+      position:relative;
+      padding-right:25px;
+    }
+  }
+  .comment--text {
     position:relative;
-    padding-right:25px;
   }
-}
-.comment-list-text {
-  position:relative;
-}
-.comment-list-like {
-  position:absolute;
-  bottom:0;
-  right:0;
-  color:#afafaf;
-  text-decoration:none;
-  font-size: 12px;
-  :hover {
-    color:#777;
+  .comment--like {
+    position:absolute;
+    bottom:0;
+    right:0;
+    color:#afafaf;
     text-decoration:none;
+    font-size: 12px;
+    :hover {
+      color:#777;
+      text-decoration:none;
+    }
+  }
+  .comment--date {
+    text-align:right;
+    color: #afafaf;
+    font-size: 11px;
   }
 }
-.comment-list-date {
-  text-align:right;
-  color: #afafaf;
-  font-size: 11px;
-}
+
 .img-rounded {
   border-radius:4px;
 }
 
-/* Èêîíêè */
+/* Ð˜ÐºÐ¾Ð½ÐºÐ¸ */
 .icon-link {
   font-size:12px;
   margin-right:10px;
@@ -196,4 +208,174 @@ h2 {
 }
 .icon-b-user {
   background-position:0px -125px;
+}
+
+/* Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð¿Ð¾Ð¸ÑÐºÐ° */
+.search-results ul {
+  list-style-type:none;
+  padding:0;
+  li {
+    border-top:1px solid #ededed;
+    padding:10px 0;
+    &:last-child {
+      border-bottom:1px solid #ededed;
+    }
+  }
+}
+.search-result--user img {
+  width:30px;
+  height:30px;
+  margin:5px;
+}
+.search-result--user b {
+  line-height:20px;
+}
+.search-result--user span {
+  color:#afafaf;
+  font-size:11px;
+}
+.search-result--date {
+  color:#afafaf;
+  font-size:11px;
+}
+.search-result--track-img {
+  float:left;
+  width:80px;
+  margin-right:15px;
+  img {
+    width:80px;
+    height:80px;
+  }
+}
+.search-result--track-duration {
+  text-align:center;
+  color:#afafaf;
+  font-size:11px;
+  padding-bottom:5px;
+}
+.search-result--track-info {
+  float:left;
+  width:655px;
+}
+.search-result--track-category {
+  margin-top:25px;
+  font-size:16px;
+  color:#777777;
+}
+.search-result--track h3 {
+  max-width:595px;
+}
+.search-result--track h3, .search-result--post h3, .search-result--usr h3 {
+  margin:0;
+  font-size:22px;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+  display:inline-block;
+}
+.search-result--track-id, .search-result--post-id, .search-result--usr-id {
+  width:50px;
+  font-size:11px;
+  color:#afafaf;
+  display:inline-block;
+  vertical-align:top;
+  line-height:32px;
+}
+.search-result--icons .icon-link {
+  color:#afafaf;
+  text-decoration:none;
+}
+.search-result--icons .icon-link:hover {
+  color:#777;
+}
+.search-result--track-ainfo {
+  float:left;
+  width:215px;
+  text-align:right;
+}
+.search-result--track-ainfo .search-result--user {
+  float:left;
+  margin-top:25px;
+  width:150px;
+  line-height:15px;
+}
+
+.search-result--btn-play {
+  margin:20px 0 0 15px;
+  float:left;
+  display:block;
+  width:50px;
+  height:50px;
+  background: linear-gradient(to bottom, rgba(81, 207, 94, 1) 0%, rgba(33, 177, 154, 1) 100%);
+  border-radius:50%;
+  &:hover {
+    background: linear-gradient(to bottom, rgba(81, 207, 94, 0.85) 0%, rgba(33, 177, 154, 0.85) 100%);
+  }
+  span {
+    display:block;
+    width:25px;
+    height:25px;
+    background: url('/app/img/sprite.png') no-repeat -130px -125px;
+    margin: 25%;
+  }
+}
+
+.search-result--post h3 {
+  margin-top:15px;
+}
+.search-result--post-text, .search-result--post-id {
+  margin:15px 0;
+}
+.search-result--post-img {
+  margin-bottom:10px;
+}
+
+.search-result--usr {
+  padding:20px 0;
+}
+.search-result--usr-img {
+  float:left;
+  width:90px;
+  img {
+    width:80px;
+    height:80px;
+  }
+}
+.search-result--usr-id {
+  width: 50px;
+  font-size: 11px;
+  color: #afafaf;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 32px;
+}
+.search-result--usr-cat {
+  color:#777;
+  margin-top:-5px;
+}
+.search-result--usr-info {
+  float: left;
+  width: 670px;
+  padding: 0 10px;
+}
+.search-result--usr-ainfo {
+  float:left;
+  width:205px;
+  text-align:right;
+  padding:0 10px;
+  > div {
+    font-size: 19px;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  .icon {
+    margin-top: 3px;
+  }
+  >span {
+    font-size:12px;
+    color:#afafaf;
+  }
+}
+.search-result--usr-following {
+  margin-top:8px;
 }

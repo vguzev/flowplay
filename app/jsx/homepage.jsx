@@ -1,10 +1,18 @@
 var React = require('react');
-var Toolbar = require('jsx/components/header');
-var CommentsBox = require('jsx/components/comments/commentsbox');
-var Slider = require('jsx/components/slider');
+var Header = require('jsx/components/Header');
+var BigSearchForm = require('jsx/components/search/BigSearchForm');
+var SearchResultsList = require('jsx/components/search/SearchResultsList');
+var CommentsBox = require('jsx/components/comments/CommentsBox');
+var Slider = require('jsx/components/Slider');
+
 React.render(
     <div>
-        <CommentsBox />
+        <Header />
+        <div className="content">
+            <BigSearchForm />
+            <SearchResultsList />
+            <CommentsBox />
+        </div>
         <Slider />
     </div>,
     document.getElementById('content')

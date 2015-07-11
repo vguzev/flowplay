@@ -10,14 +10,12 @@ module.exports = Reflux.createStore({
     page: 1,
     listenables: [CommentsActions],
     onLoad: function(page) {
-        console.log('CommentStore.onLoad('+page+')');
         this.page = page;
         var _this = this;
         request
             .get('http://vefire.ru/ibm/flowplay-api/ajax/comment/list/')
             .query({page: page, items_per_page: settings.commentsPerPage})
             .end(function(err, res){
-                console.log('onLoad->end()');
                 if (res.ok) {
                     _this.comments = res.body.results;
                     _this.found = res.body.found;
@@ -27,13 +25,11 @@ module.exports = Reflux.createStore({
             });
     },
     onCreate: function(text) {
-        console.log('CommentStore.onCreate('+text+')');
         var _this = this;
         request
             .post('http://vefire.ru/ibm/flowplay-api/ajax/comment/create/')
             .send({user_id: 1, text: text})
             .end(function(err, res){
-                console.log('onCreate->end()');
                 if (res.ok) {
                     _this.trigger(_this);
                     _this.onLoad(1);
@@ -42,13 +38,11 @@ module.exports = Reflux.createStore({
             });
     },
     onDelete: function(commentId) {
-        console.log('CommentStore.onDelete('+commentId+')');
         var _this = this;
         request
             .del('http://vefire.ru/ibm/flowplay-api/ajax/comment/delete/')
             .send({comment_id: commentId})
             .end(function(err, res){
-                console.log('onDelete->end()');
                 if (res.ok) {
                     _this.trigger(_this);
                     _this.onLoad(_this.page);

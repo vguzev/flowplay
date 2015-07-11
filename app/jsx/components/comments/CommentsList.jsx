@@ -2,8 +2,8 @@ var React = require('react');
 var Reflux = require('reflux');
 var CommentsActions = require("jsx/actions/commentactions");
 var CommentsStore = require("jsx/stores/CommentStore");
-var Comment = require("jsx/components/comments/comment");
-var Pager = require("jsx/components/comments/pager");
+var Comment = require("jsx/components/comments/Comment");
+var Pager = require("jsx/components/comments/Pager");
 var settings = require("jsx/settings");
 
 module.exports = React.createClass({displayName: 'CommentsList',
@@ -17,9 +17,6 @@ module.exports = React.createClass({displayName: 'CommentsList',
         this.loadCommentsFromServer(this.state.page);
     },
     onLoad: function(data) {
-        console.log('CommentsList.onLoad');
-        console.log(CommentsStore.found);
-        console.log(CommentsStore.comments);
         this.setState({
             page: CommentsStore.page,
             comments: CommentsStore.comments,
@@ -32,20 +29,17 @@ module.exports = React.createClass({displayName: 'CommentsList',
 
     render: function() {
         var comments = CommentsStore.comments;
-        console.log('CommentsList.render');
-
         var commentNodes = comments.map(function (comment) {
             return (
                 <Comment key={comment.comment_id} comment={comment} />
             );
         });
-        console.log('CommentsList.render: this.state.count='+this.state.found);
         return (
-            <div className="comment-list">
+            <div className="comments-list">
                 <ul>
                     {commentNodes}
                 </ul>
-                <div className="comment-list-pager">
+                <div className="comments-list--pager">
                     <span>Страницы:</span>
                     <Pager page={this.state.page} commentsPerPage={settings.commentsPerPage} count={this.state.found} />
                 </div>

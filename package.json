@@ -2,7 +2,7 @@
   "name": "flowplay",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack-dev-server --progress --hot"
+    "start": "webpack-dev-server -d --progress --hot"
   },
   "repository": {
     "type": "git",

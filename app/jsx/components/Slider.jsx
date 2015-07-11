@@ -16,16 +16,12 @@ module.exports = React.createClass({displayName: 'Slider',
         SliderActions.load();
     },
     onLoad: function() {
-        console.log('SliderList.onLoad');
-        console.log(SliderStore.slides);
         this.setState({
             slides: SliderStore.slides
         });
     },
     render: function () {
         var slides = SliderStore.slides;
-        console.log('Slider.render');
-        console.log(slides);
 
         var slidesNodes = _.mapObject(slides, function (slide) {
             var divStyle={
@@ -44,7 +40,7 @@ module.exports = React.createClass({displayName: 'Slider',
         });
         var settings = {
             dots: true,
-            autoplay: false,
+            autoplay: true,
             arrows: false,
             fade: true,
             infinite: false,
