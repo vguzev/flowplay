@@ -21,7 +21,7 @@ module.exports = React.createClass({displayName: 'SearchResultsList',
         console.log(SearchStore.results);
         this.setState({
             page: SearchStore.page,
-            comments: SearchStore.results,
+            results: SearchStore.results,
             found: SearchStore.found
         });
     },

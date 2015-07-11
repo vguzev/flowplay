@@ -10,7 +10,7 @@ module.exports = React.createClass({displayName: 'SearchResultsItem',
         console.log('SearchResultsItem.render()');
         var object = this.props.object;
         if (object.type_id == 1) {
-            // Песня
+            // Композиция
             return (
                 <SearchResultsItemTrack object={object} />
             );
