@@ -1,15 +1,10 @@
 var React = require('react');
 var Reflux = require('reflux');
 var SearchActions = require("jsx/actions/searchactions");
-var SearchStore = require("jsx/stores/SearchStore");
 
 module.exports = React.createClass({displayName: 'SearchForm',
     getInitialState: function() {
         return {text:''};
-    },
-    onSubmit: function() {
-        SearchActions.search(this.state.text);
-        return false;
     },
     onChangeText: function(e) {
         this.setState({text: e.target.value});
@@ -19,10 +14,9 @@ module.exports = React.createClass({displayName: 'SearchForm',
     render: function () {
         var text = this.state.text;
         return (
-            <div className="search-form">
-                <form onSubmit={this.onSubmit}>
-                    <input type="text" placeholder="Поиск" value={text} onChange={this.onChangeText} />
-                </form>
+            <div className="search-form form-group">
+                <input type="text" placeholder="Поиск" className="form-control" value={text} onChange={this.onChangeText} />
+                <span className="icon-search"></span>
             </div>
         );
     }

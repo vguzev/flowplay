@@ -1,4 +1,4 @@
-/* Bootstrap */
+/* Общие стили */
 body {
   font-family:Arial;
 }
@@ -15,16 +15,27 @@ a {
   box-shadow:none;
 }
 
+/* Кнопки */
 .btn {
   padding: 3px 10px;
   border:0;
-}
-.btn-default {
-  #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
-  color:#fff;
-  &:hover, &:focus {
-    #gradient.vertical(rgba(81, 207, 94, 0.85), rgba(33, 177, 154, 0.85), 0, 100%);
+  &.btn-default {
+    #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
     color:#fff;
+    &:hover, &:focus {
+      #gradient.vertical(rgba(81, 207, 94, 0.85), rgba(33, 177, 154, 0.85), 0, 100%);
+      color:#fff;
+    }
+  }
+}
+.btn-link {
+  font-size:12px;
+  color:#afafaf;
+  text-decoration:none;
+  padding:0;
+  &:hover {
+    color:#777;
+    text-decoration:none;
   }
 }
 h2 {
@@ -32,15 +43,29 @@ h2 {
   margin-bottom:20px;
 }
 .content {
-  margin-top:120px;
+  margin-top:100px;
 }
-.fixcontent {
+.container {
   width:965px;
   text-align:left;
   margin: 0 auto;
+  padding:0;
+}
+.img-rounded {
+  border-radius:4px;
 }
 
-
+.top {
+  background:#333;
+}
+.logo {
+  display:block;
+  width:120px;
+  height:20px;
+  background:url('/app/img/sprite.png');
+  margin:15px 0;
+  float:left;
+}
 
 /* Форма добавления нового комментария */
 .comment-form {
@@ -53,7 +78,7 @@ h2 {
   }
 }
 
-/* Комментарии */
+/* Список комментариев */
 .comments-list {
   ul {
     list-style-type: none;
@@ -76,30 +101,31 @@ h2 {
       margin-top: 5px;
     }
   }
-}
-.pagination {
-  margin:0;
-  >li {
-    >a, >span {
-      color: #444;
-      border: 0;
-      padding: 5px 11px;
-    }
-    >a {
-      border-radius: 4px;
-      margin: 0 3px;
-      &:hover {
-        #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
+  .pagination {
+    margin:0;
+    >li {
+      >a, >span {
+        color: #444;
+        border: 0;
+        padding: 5px 11px;
+      }
+      >a {
+        border-radius: 4px;
+        margin: 0 3px;
+        &:hover {
+          #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
+          color:#fff;
+        }
+      }
+      >a.active, >a.active:hover  {
+        #gradient.vertical(rgba(245, 140, 31, 1), rgba(252, 189, 13, 1), 0, 100%);
         color:#fff;
       }
-    }
-    >a.active, >a.active:hover  {
-      #gradient.vertical(rgba(245, 140, 31, 1), rgba(252, 189, 13, 1), 0, 100%);
-      color:#fff;
     }
   }
 }
 
+/* Комментарий */
 .comment {
   .comment--icons {
     display: inline-block;
@@ -112,7 +138,7 @@ h2 {
       }
     }
   }
- .comment--img {
+  .comment--img {
     float: left;
     width: 75px;
     img {
@@ -149,67 +175,6 @@ h2 {
   }
 }
 
-.img-rounded {
-  border-radius:4px;
-}
-
-/* Иконки */
-.icon-link {
-  font-size:12px;
-  margin-right:10px;
-}
-.icon {
-  display: inline-block;
-  background: url('/app/img/sprite.png') no-repeat 0 0;
-  width:15px;
-  height:15px;
-  vertical-align:text-top;
-}
-.icon-heart {
-  background-position:-60px -80px;
-}
-.icon-plus {
-  background-position:-45px -80px;
-}
-.icon-comment {
-  background-position:-90px -80px;
-}
-.icon-reply {
-  background-position:-75px -80px;
-}
-.icon-close {
-  background-position:-30px -80px;
-}
-.icon-gear {
-  background-position:0px -80px;
-}
-.icon-minus {
-  background-position:-135px -80px;
-}
-.icon-user-w {
-  background-position:-150px -110px;
-}
-.icon-star {
-  background-position:-165px -80px;
-}
-.icon-b-track, .icon-b-post, .icon-b-user {
-  display: inline-block;
-  background: url('/app/img/sprite.png') no-repeat 0 0;
-  width:35px;
-  height:35px;
-  vertical-align:middle;
-  margin-right:5px;
-}
-.icon-b-track {
-  background-position:-35px -125px;
-}
-.icon-b-post {
-  background-position:-70px -125px;
-}
-.icon-b-user {
-  background-position:0px -125px;
-}
-
 /* Результаты поиска */
 .search-results ul {
   list-style-type:none;
@@ -222,160 +187,523 @@ h2 {
     }
   }
 }
-.search-result--user img {
+
+/* Элемент поиска */
+.search-result {
+  .search-result--user {
+    img {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+    }
+    b {
+      line-height: 20px;
+    }
+    span {
+      color: #afafaf;
+      font-size: 11px;
+    }
+  }
+  .search-result--date {
+    color: #afafaf;
+    font-size: 11px;
+  }
+  .search-result--track-img {
+    float: left;
+    width: 80px;
+    margin-right: 15px;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  .search-result--track-duration {
+    text-align: center;
+    color: #afafaf;
+    font-size: 11px;
+    padding-bottom: 5px;
+  }
+  .search-result--track-info {
+    float: left;
+    width: 655px;
+  }
+  .search-result--track-category {
+    margin-top: 25px;
+    font-size: 16px;
+    color: #777777;
+  }
+  .search-result--track h3 {
+    max-width: 595px;
+  }
+  .search-result--track, .search-result--post, .search-result--usr {
+    h3 {
+      margin: 0;
+      font-size: 22px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-block;
+    }
+  }
+  .search-result--track-id, .search-result--post-id, .search-result--usr-id {
+    width: 50px;
+    font-size: 11px;
+    color: #afafaf;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 32px;
+  }
+  .search-result--icons {
+    .icon-link {
+      color: #afafaf;
+      text-decoration: none;
+    }
+    .icon-link:hover {
+      color: #777;
+    }
+  }
+  .search-result--track-ainfo {
+    float: left;
+    width: 215px;
+    text-align: right;
+    .search-result--user {
+      float: left;
+      margin-top: 25px;
+      width: 150px;
+      line-height: 15px;
+    }
+  }
+
+  .search-result--btn-play {
+    margin: 20px 0 0 15px;
+    float: left;
+    display: block;
+    width: 50px;
+    height: 50px;
+    #gradient.vertical(rgba(81, 207, 94, 1), rgba(33, 177, 154, 1), 0, 100%);
+    border-radius: 50%;
+    &:hover {
+      #gradient.vertical(rgba(81, 207, 94, 0.85), rgba(33, 177, 154, 0.85), 0, 100%);
+    }
+    span {
+      display: block;
+      width: 25px;
+      height: 25px;
+      background: url('/app/img/sprite.png') no-repeat -130px -125px;
+      margin: 25%;
+    }
+  }
+
+  .search-result--post h3 {
+    margin-top: 15px;
+  }
+  .search-result--post-text, .search-result--post-id {
+    margin: 15px 0;
+  }
+  .search-result--post-img {
+    margin-bottom: 10px;
+  }
+
+  .search-result--usr {
+    padding: 20px 0;
+  }
+  .search-result--usr-img {
+    float: left;
+    width: 90px;
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  .search-result--usr-id {
+    width: 50px;
+    font-size: 11px;
+    color: #afafaf;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 32px;
+  }
+  .search-result--usr-cat {
+    color: #777;
+    margin-top: -5px;
+  }
+  .search-result--usr-info {
+    float: left;
+    width: 670px;
+    padding: 0 10px;
+  }
+  .search-result--usr-ainfo {
+    float: left;
+    width: 205px;
+    text-align: right;
+    padding: 0 10px;
+    > div {
+      font-size: 19px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+    .icon {
+      margin-top: 3px;
+    }
+    > span {
+      font-size: 12px;
+      color: #afafaf;
+    }
+  }
+  .search-result--usr-following {
+    margin-top: 8px;
+  }
+}
+
+/* Большая форма поиска */
+.big-search {
+  .green-block {
+    background: linear-gradient(to bottom, rgba(81, 207, 94, 1) 0%, rgba(33, 177, 154, 1) 100%);
+    border-radius: 4px;
+    padding: 20px;
+    color: #fff;
+    margin: 15px 0;
+  }
+  .btn-default {
+    background: #fff;
+    color: #444;
+    width: 225px;
+    text-align: left;
+    margin-right: 3px;
+    &:hover {
+      color:#333333;
+    }
+  }
+  .btn-group.open .dropdown-toggle {
+    box-shadow:none;
+  }
+  .btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+    background:#fff;
+  }
+  .caret {
+    color:#37bc6c;
+    margin-top:8px;;
+    float:right;
+  }
+  .dropdown-menu {
+    min-width:225px;
+    margin-top:5px;
+    box-shadow:none;
+    border:0;
+    li {
+      padding:0 5px;
+    }
+    label {
+      color:#444;
+      font-weight:normal;
+      display:block;
+      padding:2px 10px;
+      cursor:pointer;
+      margin:0 5px;
+      &:hover {
+        background:#eee;
+      }
+    }
+    input {
+      margin-right:5px;
+    }
+  }
+  .form-group {
+    margin:0 3px 0 0;
+    position:relative;
+    .icon-search {
+      background: url('/app/img/sprite.png') no-repeat -20px -160px;
+      cursor:pointer;
+      width:20px;
+      height:20px;
+      position:absolute;
+      right:10px;
+      top:3px;
+      display:block;
+    }
+  }
+  .form-control {
+    margin-top:15px;
+    border:0;
+    height:26px;
+  }
+}
+
+/* Иконки */
+.icon-link {
+  font-size:12px;
+  margin-right:10px;
+}
+.icon-alert-info {
+  font-size:30px;
+  color:#dac44a;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.icon {
+  display: inline-block;
+  background: url('/app/img/sprite.png') no-repeat 0 0;
+  width:15px;
+  height:15px;
+  vertical-align:text-top;
+  &.icon-heart {
+    background-position:-60px -80px;
+  }
+  &.icon-plus {
+    background-position:-45px -80px;
+  }
+  &.icon-comment {
+    background-position:-90px -80px;
+  }
+  &.icon-reply {
+    background-position:-75px -80px;
+  }
+  &.icon-close {
+    background-position:-30px -80px;
+  }
+  &.icon-gear {
+    background-position:0px -80px;
+  }
+  &.icon-minus {
+    background-position:-135px -80px;
+  }
+  &.icon-user-w {
+    background-position:-150px -110px;
+  }
+  &.icon-star {
+    background-position:-165px -80px;
+  }
+  &.icon-b-track, &.icon-b-post, &.icon-b-user {
+    display: inline-block;
+    background: url('/app/img/sprite.png') no-repeat 0 0;
+    width:35px;
+    height:35px;
+    vertical-align:middle;
+    margin-right:5px;
+  }
+  &.icon-b-track {
+    background-position:-35px -125px;
+  }
+  &.icon-b-post {
+    background-position:-70px -125px;
+  }
+  &.icon-b-user {
+    background-position: 0px -125px;
+  }
+}
+
+/* Плеер */
+.player {
+  padding:5px 0 0 15px;
+  .progress {
+    margin:15px 10px 10px 10px;
+    height:8px;
+    background-color:#272727;
+    width:385px;
+    float:left;
+    position:relative;
+  }
+  .progress-bar {
+    border-radius: 4px;
+    background-color:#414141;
+    position:absolute;
+    left:0;
+  }
+  .progress-bar-success {
+    background-color:#37bc6c;
+    z-index:1;
+  }
+}
+/* Кнопки плеера */
+.player-btn {
+  margin:5px;
+  display:block;
   width:30px;
   height:30px;
-  margin:5px;
-}
-.search-result--user b {
-  line-height:20px;
-}
-.search-result--user span {
-  color:#afafaf;
-  font-size:11px;
-}
-.search-result--date {
-  color:#afafaf;
-  font-size:11px;
-}
-.search-result--track-img {
+  background: url('/app/img/sprite.png') no-repeat 0 0;
+  cursor:pointer;
   float:left;
-  width:80px;
-  margin-right:15px;
-  img {
-    width:80px;
-    height:80px;
+  &:first-of-type {
+    margin-left:0;
   }
-}
-.search-result--track-duration {
-  text-align:center;
-  color:#afafaf;
-  font-size:11px;
-  padding-bottom:5px;
-}
-.search-result--track-info {
-  float:left;
-  width:655px;
-}
-.search-result--track-category {
-  margin-top:25px;
-  font-size:16px;
-  color:#777777;
-}
-.search-result--track h3 {
-  max-width:595px;
-}
-.search-result--track h3, .search-result--post h3, .search-result--usr h3 {
-  margin:0;
-  font-size:22px;
-  text-overflow:ellipsis;
-  overflow:hidden;
-  white-space:nowrap;
-  display:inline-block;
-}
-.search-result--track-id, .search-result--post-id, .search-result--usr-id {
-  width:50px;
-  font-size:11px;
-  color:#afafaf;
-  display:inline-block;
-  vertical-align:top;
-  line-height:32px;
-}
-.search-result--icons .icon-link {
-  color:#afafaf;
-  text-decoration:none;
-}
-.search-result--icons .icon-link:hover {
-  color:#777;
-}
-.search-result--track-ainfo {
-  float:left;
-  width:215px;
-  text-align:right;
-}
-.search-result--track-ainfo .search-result--user {
-  float:left;
-  margin-top:25px;
-  width:150px;
-  line-height:15px;
-}
-
-.search-result--btn-play {
-  margin:20px 0 0 15px;
-  float:left;
-  display:block;
-  width:50px;
-  height:50px;
-  background: linear-gradient(to bottom, rgba(81, 207, 94, 1) 0%, rgba(33, 177, 154, 1) 100%);
-  border-radius:50%;
-  &:hover {
-    background: linear-gradient(to bottom, rgba(81, 207, 94, 0.85) 0%, rgba(33, 177, 154, 0.85) 100%);
+  &.player-btn-backward {
+    background-position:-60px -50px;
+    &:hover {
+      background-position:-60px -20px;
+    }
   }
-  span {
-    display:block;
-    width:25px;
-    height:25px;
-    background: url('/app/img/sprite.png') no-repeat -130px -125px;
-    margin: 25%;
+  &.player-btn-forward {
+    background-position:-90px -50px;
+    &:hover {
+      background-position:-90px -20px;
+    }
+  }
+  &.player-btn-play {
+    background-position:-150px -50px;
+    &:hover {
+      background-position:-150px -20px;
+    }
+  }
+  &.player-btn-pause {
+    background-position:-120px -50px;
+    &:hover {
+      background-position:-120px -20px;
+    }
+  }
+  &.player-btn-repeat {
+    background-position:-30px -50px;
+    &:hover {
+      background-position:-30px -20px;
+    }
+  }
+  &.player-btn-shuffle {
+    background-position:0 -50px;
+    &:hover {
+      background-position:0 -20px;
+    }
+  }
+  &.player-btn-volume {
+    background-position:-180px -50px;
+    &:hover {
+      background-position:-180px -20px;
+    }
   }
 }
 
-.search-result--post h3 {
-  margin-top:15px;
-}
-.search-result--post-text, .search-result--post-id {
-  margin:15px 0;
-}
-.search-result--post-img {
-  margin-bottom:10px;
-}
-
-.search-result--usr {
-  padding:20px 0;
-}
-.search-result--usr-img {
-  float:left;
-  width:90px;
-  img {
-    width:80px;
-    height:80px;
+/* Поиск в верхней панели */
+.top-search {
+  padding-left:30px;
+  .form-group {
+    margin-top:10px;
+    margin-bottom:10px;
+    position:relative;
+    .form-control {
+      background:#272727;
+      border-radius: 4px;
+      border:0;
+      color:#afafaf;
+      padding-right:25px;
+      &:focus {
+        box-shadow:none;
+      }
+    }
+    .icon-search {
+      background: url('/app/img/sprite.png') no-repeat -20px -160px;
+      cursor:pointer;
+      width:20px;
+      height:20px;
+      position:absolute;
+      right:10px;
+      top:5px;
+      display:block;
+    }
+  }
+  .dropdown-menu {
+    background:#272727;
+    border-radius: 4px;
+    border: 0;
+    color: #afafaf;
+    width:287px;
+    margin:-3px 0 0 30px;
+    a {
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+      color: #afafaf;
+      text-decoration:none;
+      padding:8px 10px;
+      width:287px;
+      border-top:1px solid #323232;
+      &:hover {
+        background:#323232;
+        color: #afafaf;
+      }
+    }
+    div {
+      padding:10px;
+      font-weight:bold;
+      font-size:16px;
+      span {
+        color:#37bc6c;
+      }
+    }
   }
 }
-.search-result--usr-id {
-  width: 50px;
-  font-size: 11px;
-  color: #afafaf;
-  display: inline-block;
-  vertical-align: top;
-  line-height: 32px;
-}
-.search-result--usr-cat {
-  color:#777;
-  margin-top:-5px;
-}
-.search-result--usr-info {
+
+/* Плейлист */
+.top-playlist {
+  background:#272727;
+  border-radius: 4px;
   float: left;
-  width: 670px;
-  padding: 0 10px;
-}
-.search-result--usr-ainfo {
-  float:left;
-  width:205px;
-  text-align:right;
-  padding:0 10px;
-  > div {
-    font-size: 19px;
-    color: #777;
-    margin-bottom: 15px;
-  }
-  .icon {
-    margin-top: 3px;
-  }
-  >span {
-    font-size:12px;
+  margin:0 3px;
+  width:415px;
+  height:50px;
+  a {
     color:#afafaf;
+    text-decoration:none;
+    &:hover {
+      color:#fff;
+    }
+  }
+  img {
+    float:left;
+    width:30px;
+    height:30px;
+    margin:10px;
+  }
+  .top-playlist--content {
+    color:#fff;
+    margin: 5px 10px 10px 0;
+  }
+  .top-playlist--content div {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .icon-link:hover .icon {
+    background-position-y:-110px;
   }
 }
-.search-result--usr-following {
-  margin-top:8px;
+
+/* Верхнее меню */
+.header-menu {
+  background:#fafafa;
+  border-bottom: 1px #ededed solid;
+  ul {
+    padding: 24px 0 13px 0;
+    .list-unstyled;
+    .list-inline;
+    li {
+      position:relative;
+      margin-right:35px;
+      a {
+        font-weight: 300;
+        font-size:20px;
+        color: #777777;
+        &.active {
+          color: #323232;
+        }
+      }
+      span {
+        text-align:right;
+        color: #cdcdcd;
+        font-size: 11px;
+        position:absolute;
+        top:-11px;
+        right:5px;
+      }
+    }
+  }
+}
+.page-header {
+  background:#fafafa;
+  border-bottom: 1px #ededed solid;
+  margin:0;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  h1 {
+    .container;
+    border:0;
+    font-size:30px;
+  }
 }

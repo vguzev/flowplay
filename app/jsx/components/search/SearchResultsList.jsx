@@ -29,11 +29,16 @@ module.exports = React.createClass({displayName: 'SearchResultsList',
         var results = SearchStore.results;
         var resultsNodes = results.map(function (object) {
             return (
-                <SearchResultsItem key={object.object_id} object={object} />
+                <SearchResultsItem key={object.object_id} object={object}/>
             );
         });
+        if (results.length == 0) {
+            return (
+                <div className="alert alert-info"><i className="fa fa-exclamation-circle icon-alert-info"></i> Ничего не найдено</div>
+            );
+        }
         return (
-            <div className="fixcontent search-results">
+            <div className="search-results">
                 <ul className="">
                     {resultsNodes}
                 </ul>

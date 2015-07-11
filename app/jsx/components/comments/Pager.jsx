@@ -6,6 +6,7 @@ var _ = require('underscore');
 module.exports = React.createClass({displayName: 'Pager',
     openPage: function(page) {
         CommentsActions.load(page);
+        return false;
     },
     render: function() {
         var curPage = this.props.page;

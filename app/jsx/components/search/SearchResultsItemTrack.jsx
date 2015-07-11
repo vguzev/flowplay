@@ -30,7 +30,7 @@ module.exports = React.createClass({displayName: 'SearchResultsItemTrack',
         var time = this.getTime(object.duration);
         var imageSrc = "/app/img/albums/"+object.id+".jpg";
         return (
-            <li key={object.id}>
+            <li key={object.id} className="search-result">
                 <div className="search-result--track">
                     <div className="clearfix">
                         <div className="search-result--track-img">

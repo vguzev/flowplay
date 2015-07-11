@@ -14,7 +14,7 @@ module.exports = React.createClass({displayName: 'SearchResultsItemPost',
             );
         }
         return (
-            <li key={object.id}>
+            <li key={object.id} className="search-result">
                 <div className="search-result--post">
                     <span className="search-result--date pull-right">{moment(object.create_date).format('DD.MM.YYYY')}</span>
                     <h3>{object.title}</h3>

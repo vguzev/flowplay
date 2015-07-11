@@ -6,14 +6,18 @@ var SliderStore = require("jsx/stores/SliderStore");
 var _ = require("underscore");
 
 module.exports = React.createClass({displayName: 'Slider',
-    mixins: [
-        Reflux.listenTo(SliderStore, "onLoad")
-    ],
     getInitialState: function() {
         return {slides: []};
     },
     componentDidMount: function() {
         SliderActions.load();
+        this.unsubscribe = SliderStore.listen(this.onLoad);
+    },
+    componentWillMount: function() {
+        this.onLoad = this.onLoad.bind(this);
+    },
+    componentWillUnmount: function() {
+        this.unsubscribe();
     },
     onLoad: function() {
         this.setState({
@@ -29,7 +33,7 @@ module.exports = React.createClass({displayName: 'Slider',
                 height: "350px"
             };
             return (
-                <div key={slide.id} style={divStyle}>
+                <div key={'slide'+slide.id} style={divStyle}>
                     <div className="slider-caption">
                         <h1>{slide.header}</h1>
                         <p>{slide.description}</p>
@@ -43,7 +47,7 @@ module.exports = React.createClass({displayName: 'Slider',
             autoplay: true,
             arrows: false,
             fade: true,
-            infinite: false,
+            infinite: true,
             speed: 1000,
             swipe: false,
             slidesToShow: 1,

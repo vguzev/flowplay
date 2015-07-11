@@ -9,23 +9,24 @@
     "url": "git+https://github.com/vguzev/flowplay.git"
   },
   "devDependencies": {
+    "css-loader": "latest",
+    "extract-text-webpack-plugin": "latest",
     "grunt": "^0.4.5",
+    "jsx-loader": "^0.13.2",
+    "less": "latest",
+    "less-loader": "latest",
+    "moment": "latest",
     "node-libs-browser": "^0.5.2",
     "react": "^0.13.3",
-    "react-router": "^0.13.3",
-    "reflux": "^0.2.8",
-    "superagent": "^1.2.0",
-    "webpack": "^1.10.1",
-    "jsx-loader": "^0.13.2",
-    "css-loader": "latest",
-    "less-loader": "latest",
-    "style-loader": "latest",
-    "underscore": "latest",
-    "less": "latest",
-    "extract-text-webpack-plugin": "latest",
     "react-marked": "latest",
-    "moment": "latest",
-    "react-slick": "latest"
+    "react-onclickoutside": "^0.2.4",
+    "react-router": "^0.13.3",
+    "react-slick": "latest",
+    "reflux": "^0.2.8",
+    "style-loader": "latest",
+    "superagent": "^1.2.0",
+    "underscore": "latest",
+    "webpack": "^1.10.1"
   },
   "bugs": {
     "url": "https://github.com/vguzev/flowplay/issues"
