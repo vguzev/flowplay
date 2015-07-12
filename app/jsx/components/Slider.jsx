@@ -12,12 +12,19 @@ module.exports = React.createClass({displayName: 'Slider',
     componentDidMount: function() {
         SliderActions.load();
         this.unsubscribe = SliderStore.listen(this.onLoad);
+        window.addEventListener('resize', this.onWindowResized);
     },
     componentWillMount: function() {
         this.onLoad = this.onLoad.bind(this);
+        window.removeEventListener('resize', this.onWindowResized);
     },
     componentWillUnmount: function() {
         this.unsubscribe();
+    },
+    onWindowResized: function () {
+        // Debouncing using underscore _.debounce is optionnal
+        // Временный багфикс для решения проблемы с перерисовкой слайдера при ресайзе окна - см. https://github.com/akiran/react-slick/issues/67
+        this.forceUpdate()
     },
     onLoad: function() {
         this.setState({
