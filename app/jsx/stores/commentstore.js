@@ -13,17 +13,17 @@ module.exports = Reflux.createStore({
     onLoad: function(page) {
         this.page = page;
         var _this = this;
-        if (_.has(this.cache, page)) {
+        if (page != 1 && _.has(this.cache, page)) {
             // Страница уже закеширована - возвращаем из кеша
             this.comments = this.cache[page].comments;
             this.found = this.cache[page].found;
             this.trigger(this);
         }
         else {
-            // Страницы нет в кеше - запрашиваем у сервера
+            // Страницы нет в кеше (либо это первая страница) - запрашиваем у сервера
             var numberOfComments = settings.commentsPerPage;
             var startFrom = settings.commentsPerPage * (page - 1);
-            // При запросе второй страницы - запрашиваем данные сразу на 5 ближайших страниц,
+            // При запросе страниц, начиная со второй - запрашиваем данные сразу на 5 ближайших страниц,
             // т.к. если пользователь запросил вторую страницу, то наверняка он будет смотреть и последующие страницы
             if (page > 1) numberOfComments = settings.commentsPerPage * 5;
             request
@@ -31,7 +31,6 @@ module.exports = Reflux.createStore({
                 .query({start_from: startFrom, number_of_comments: numberOfComments})
                 .end(function (err, res) {
                     if (res.ok) {
-                        // Первую страницу никогда не кешируем
                         if (page > 1) {
                             // Кешируем данные
                             var chunks = _.chunk(res.body.results, settings.commentsPerPage);
@@ -42,6 +41,11 @@ module.exports = Reflux.createStore({
                             _this.found = _this.cache[page].found;
                         }
                         else {
+                            if (JSON.stringify({comments: res.body.results, found: res.body.found}) != JSON.stringify(_this.cache[1])) {
+                                // Первая страница изменилась - видимо кто-то добавил или удалил комментарий - нужно сбросить кеш...
+                                _this.cache = {};
+                            }
+                            _this.cache[1] = {comments: res.body.results, found: res.body.found};
                             _this.comments = res.body.results;
                             _this.found = res.body.found;
                         }
