@@ -16,9 +16,6 @@ module.exports = React.createClass({displayName: 'SearchResultsList',
         SearchActions.search(this.state.page, '');
     },
     onSearch: function(data) {
-        console.log('SearchResultsList.onSearch');
-        console.log(SearchStore.found);
-        console.log(SearchStore.results);
         this.setState({
             page: SearchStore.page,
             results: SearchStore.results,

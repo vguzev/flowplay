@@ -12,7 +12,7 @@ module.exports = React.createClass({displayName: 'Comment',
         var comment = this.props.comment;
         var rawMarkup = marked(comment.text.toString(), {sanitize: true});
         return (
-            <li key={comment.comment_id} className="comment">
+            <li className="comment">
                 <div className="comment--date">{moment(comment.create_date).format('DD.MM.YYYY')}</div>
                 <div className="comment--img">
                     <img className="img-rounded" src={'/app/img/users/'+comment.user_id+'.jpg'}/>

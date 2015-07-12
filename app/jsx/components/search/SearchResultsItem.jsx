@@ -7,7 +7,6 @@ var SearchResultsItemUser = require("jsx/components/search/SearchResultsItemUser
 
 module.exports = React.createClass({displayName: 'SearchResultsItem',
     render: function() {
-        console.log('SearchResultsItem.render()');
         var object = this.props.object;
         if (object.type_id == 1) {
             // Композиция

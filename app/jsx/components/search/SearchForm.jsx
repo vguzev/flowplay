@@ -5,10 +5,14 @@ var SearchStore = require("jsx/stores/SearchStore");
 
 module.exports = React.createClass({displayName: 'SearchForm',
     mixins: [
-        Reflux.listenTo(SearchStore, "onSearch")
+        Reflux.listenTo(SearchStore, "onSearch"),
+        require('react-onclickoutside')
     ],
+    handleClickOutside: function(evt) {
+        this.setState({open:false});
+    },
     getInitialState: function() {
-        return {text:'', results: [], found:0};
+        return {text:'', results: [], found: 0, open: false};
     },
     onChangeText: function(e) {
         this.setState({text: e.target.value, results:this.state.results, found: this.state.found});
@@ -18,13 +22,14 @@ module.exports = React.createClass({displayName: 'SearchForm',
         return false;
     },
     onSearch: function(data) {
-        console.log('SearchForm.onSearch');
-        console.log(SearchStore.found);
-        console.log(SearchStore.results);
+        var open = false;
+        if (SearchStore.query.trim().length!=0) open = true;
+
         this.setState({
             text: SearchStore.query,
             results: SearchStore.results,
-            found: SearchStore.found
+            found: SearchStore.found,
+            open: open
         });
     },
     render: function () {
@@ -49,24 +54,18 @@ module.exports = React.createClass({displayName: 'SearchForm',
                 );
             }
         });
-        var resultItems = '';
-        if (text.trim().length!=0) {
-            resultItems = (
-                <div className="open">
-                    <ul className="dropdown-menu" role="menu">
-                        <div>Всего найдено <span>{this.state.found}</span></div>
-                        {foundItems}
-                    </ul>
-                </div>
-            );
-        }
         return (
             <div>
                 <div className="search-form form-group">
                     <input type="text" placeholder="Поиск" className="form-control" value={text} onChange={this.onChangeText} />
                     <span className="icon-search"></span>
                 </div>
-                {resultItems}
+                <div className={this.state.open?'open':''}>
+                    <ul className="dropdown-menu" role="menu">
+                        <div>Всего найдено <span>{this.state.found}</span></div>
+                        {foundItems}
+                    </ul>
+                </div>
             </div>
         );
     }
