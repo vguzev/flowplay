@@ -38,19 +38,19 @@ module.exports = React.createClass({displayName: 'SearchForm',
             if (object.type_id == 1) {
                 // Композиция
                 return (
-                    <li><a href=""><span className="icon icon-b-track"></span>{object.title}</a></li>
+                    <li key={object.id}><a href=""><span className="icon icon-b-track"></span>{object.title}</a></li>
                 );
             }
             else if (object.type_id == 2) {
                 // Пост
                 return (
-                    <li><a href=""><span className="icon icon-b-post"></span>{object.title}</a></li>
+                    <li key={object.id}><a href=""><span className="icon icon-b-post"></span>{object.title}</a></li>
                 );
             }
             else if (object.type_id == 3) {
                 // Персона
                 return (
-                    <li><a href=""><span className="icon icon-b-user"></span>{object.title}</a></li>
+                    <li key={object.id}><a href=""><span className="icon icon-b-user"></span>{object.title}</a></li>
                 );
             }
         });

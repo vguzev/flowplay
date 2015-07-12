@@ -7,10 +7,31 @@ var _ = require("underscore");
 
 module.exports = React.createClass({displayName: 'BigSearchForm',
     render: function () {
-        var genres = {1:'Рок', 2:'Металл', 3:'Электронная', 4:'Классика', 5:'Эстрада'};
-        var artists = {1:'Мужчина', 2:'Женщина', 3:'Группа', 4:'Оркестр'};
-        var instruments = {1:'Гитара', 2:'Ударные', 3:'Фортепиано', 4:'Бас'};
-        var languages = {1:'Русский', 2:'Английский', 3:'Французский', 4:'Немецкий'};
+        var genres = [
+            {id:1, title:'Рок'},
+            {id:2, title:'Металл'},
+            {id:3, title:'Электронная'},
+            {id:4, title: 'Классика'},
+            {id:5, title:'Эстрада'}
+        ];
+        var artists = [
+            {id:1, title:'Мужчина'},
+            {id:2, title:'Женщина'},
+            {id:3, title:'Группа'},
+            {id:4, title:'Оркестр'}
+        ];
+        var instruments = [
+            {id:1, title:'Гитара'},
+            {id:2, title:'Ударные'},
+            {id:3, title:'Фортепиано'},
+            {id:4, title:'Бас'}
+        ];
+        var languages = [
+            {id:1, title:'Русский'},
+            {id:2, title:'Английский'},
+            {id:3, title:'Французский'},
+            {id:4, title:'Немецкий'}
+        ];
         return (
             <div className="big-search">
                 <div className="green-block">

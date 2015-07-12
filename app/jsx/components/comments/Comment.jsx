@@ -10,7 +10,6 @@ module.exports = React.createClass({displayName: 'Comment',
     },
     render: function() {
         var comment = this.props.comment;
-//        var rawMarkup = marked(comment.text.toString(), {sanitize: true});
         return (
             <li className="comment">
                 <div className="comment--date">{moment(comment.create_date).format('DD.MM.YYYY')}</div>
@@ -25,7 +24,7 @@ module.exports = React.createClass({displayName: 'Comment',
                         <a href="#" className="icon-link">Devel</a>
                     </div>
                     <div className="comment--text">
-                        {marked(comment.text.toString())}
+                        {marked(comment.text)}
                         <a href="#" className="comment--like">{comment.likes}<span className="icon icon-heart"></span></a>
                     </div>
                 </div>

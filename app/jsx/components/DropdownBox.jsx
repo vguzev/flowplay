@@ -17,9 +17,9 @@ module.exports = React.createClass({displayName: 'DropdownBox',
     render: function() {
         var title = this.props.title;
         var items = this.props.items;
-        var renderedItems = _.mapObject(items, function(val, key) {
+        var renderedItems = items.map(function(val, index) {
             return (
-                <li><label><input type="checkbox" value={key} />{val}</label></li>
+                <li key={'li'+index}><label><input type="checkbox" value={val.id} />{val.title}</label></li>
             );
         });
         return (

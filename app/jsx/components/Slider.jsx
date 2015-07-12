@@ -6,23 +6,20 @@ var SliderStore = require("jsx/stores/SliderStore");
 var _ = require("underscore");
 
 module.exports = React.createClass({displayName: 'Slider',
+    mixins: [
+        Reflux.listenTo(SliderStore, "onLoad")
+    ],
     getInitialState: function() {
         return {slides: []};
     },
     componentDidMount: function() {
         SliderActions.load();
-        this.unsubscribe = SliderStore.listen(this.onLoad);
         window.addEventListener('resize', this.onWindowResized);
     },
     componentWillMount: function() {
-        this.onLoad = this.onLoad.bind(this);
         window.removeEventListener('resize', this.onWindowResized);
     },
-    componentWillUnmount: function() {
-        this.unsubscribe();
-    },
     onWindowResized: function () {
-        // Debouncing using underscore _.debounce is optionnal
         // Временный багфикс для решения проблемы с перерисовкой слайдера при ресайзе окна - см. https://github.com/akiran/react-slick/issues/67
         this.forceUpdate()
     },
@@ -34,7 +31,7 @@ module.exports = React.createClass({displayName: 'Slider',
     render: function () {
         var slides = SliderStore.slides;
 
-        var slidesNodes = _.mapObject(slides, function (slide) {
+        var slidesNodes = slides.map(function(slide) {
             var divStyle={
                 backgroundImage: 'url('+slide.image+')',
                 height: "350px"

@@ -26,7 +26,7 @@ module.exports = React.createClass({displayName: 'SearchResultsList',
         var results = SearchStore.results;
         var resultsNodes = results.map(function (object) {
             return (
-                <SearchResultsItem key={object.object_id} object={object}/>
+                <SearchResultsItem key={object.id} object={object}/>
             );
         });
         if (results.length == 0) {
