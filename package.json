@@ -22,7 +22,7 @@
     "react-onclickoutside": "^0.2.4",
     "react-router": "^0.13.3",
     "react-slick": "latest",
-    "reflux": "^0.2.8",
+    "reflux": "latest",
     "style-loader": "latest",
     "superagent": "^1.2.0",
     "underscore": "latest",

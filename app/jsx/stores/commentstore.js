@@ -27,7 +27,7 @@ module.exports = Reflux.createStore({
             // т.к. если пользователь запросил вторую страницу, то наверняка он будет смотреть и последующие страницы
             if (page > 1) numberOfComments = settings.commentsPerPage * 5;
             request
-                .get('http://vefire.ru/ibm/flowplay-api/ajax/comment/list/index2.php')
+                .get('http://vefire.ru/ibm/flowplay-api/ajax/comment/list/')
                 .query({start_from: startFrom, number_of_comments: numberOfComments})
                 .end(function (err, res) {
                     if (res.ok) {
